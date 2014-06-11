@@ -1,0 +1,24 @@
+{
+    "pools" : [
+        {
+            "quota" : "10;stratum+tcp://POOLURL",
+            "user" : "USERNAME",
+            "pass" : "PASSWORD"
+        }
+    ],
+    "api-mcast-port" : "4028",
+    "api-port" : "4028",
+    "expiry" : "120",
+    "failover-only" : true,
+    "hotplug" : "0",
+    "log" : "5",
+    "no-pool-disable" : true,
+    "queue" : "1",
+    "scan-time" : "30",
+    "scrypt" : true,
+    "worktime" : true,
+    "shares" : "0",
+    "load-balance" : true,
+    "kernel-path" : "/usr/local/bin",
+    "gridseed-options" : "baud=115200,freq=850,chips=5,modules=1,usefifo=0,btc=16"
+}
