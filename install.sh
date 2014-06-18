@@ -13,8 +13,8 @@
 # 6. Add script for ease of starting miner
 
 installdir='miner'
-currentuser='joshfarrant'
-logfile='/home/joshfarrant/gspmi-install.log'
+currentuser='pi'
+logfile='/home/pi/gspmi-install.log'
 
 # info='\n\e[46m - \e[49m'
 # ok='\n\e[42m + \e[49m'
@@ -87,3 +87,13 @@ echo "$info installing cgminer"
 sudo make install >> $logfile 2>&1
 
 echo "$ok installed cgminer"
+
+echo "$info making cgminer run on boot"
+
+sudo mv miner-boot.sh /etc/init.d/
+
+sudo chmod 755 /etc/init.d/miner-boot.sh
+
+sudo update-rc.d miner-boot.sh defaults
+
+echo "$ok cgminer will now run on boot"
