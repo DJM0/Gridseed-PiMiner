@@ -31,7 +31,7 @@ error='\n \e[41m ! \e[49m'
 
 # Intro for user
 echo -e "$info This script will download and compile the miner and configure the miner to start on boot."
-echo -e "$info This may take a long time to run ~10-15 minutes. Do not quit or turn off your device while this is installing!\n"
+echo -e "$info This may take a long time to run ~10-15 minutes. Do not quit or turn off your device while this is installing!"
 
 read -p "Are you sure you want to install? (y/n) " -n 1 -r
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
