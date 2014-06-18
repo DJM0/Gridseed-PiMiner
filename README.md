@@ -7,5 +7,5 @@ Gridseed single line installer for Raspberry Pi
 To run installation, just run this single command!
 
 ```
-curl -l -L http://goo.gl/2XorOg | sh
+curl -l -L http://goo.gl/2XorOg | bash
 ```
