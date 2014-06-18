@@ -13,7 +13,7 @@
 # 6. Add script for ease of starting miner
 
 installdir="miner"
-currentuser="pi"
+# currentuser="pi"
 
 home=$(echo ~)
 
@@ -24,10 +24,10 @@ ok='\n \e[42m + \e[49m'
 error='\n \e[41m ! \e[49m'
 
 # Make sure user is pi
-if [ $USER != $currentuser ]; then
-  echo -e "$error Not running as $currentuser! :("
-  exit 1
-fi
+# if [ $USER != $currentuser ]; then
+#   echo -e "$error Not running as $currentuser! :("
+#   exit 1
+# fi
 
 # Intro for user
 echo -e "$info This script will download and compile the miner and configure the miner to start on boot."
