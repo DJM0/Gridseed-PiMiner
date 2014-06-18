@@ -85,3 +85,13 @@ echo -e "$info Installing cgminer"
 sudo make install >> $logfile 2>&1
 
 echo -e "$ok Installed cgminer"
+
+echo "$info making cgminer run on boot"
+
+sudo mv miner-boot.sh /etc/init.d/
+
+sudo chmod 755 /etc/init.d/miner-boot.sh
+
+sudo update-rc.d miner-boot.sh defaults
+
+echo "$ok cgminer will now run on boot!"
