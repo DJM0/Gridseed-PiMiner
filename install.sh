@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Gridseed single line installer aimed for Raspbian on Raspberry Pi 
 # install.sh
@@ -16,13 +16,9 @@ installdir='miner'
 currentuser='pi'
 logfile='/home/pi/gspmi-install.log'
 
-# info='\n \e[46m - \e[49m'
-# ok='\n \e[42m + \e[49m'
-# error='\n \e[41m ! \e[49m'
-
-info='[-]'
-ok='[+]'
-error='[!]'
+info='\n \e[46m - \e[49m'
+ok='\n \e[42m + \e[49m'
+error='\n \e[41m ! \e[49m'
 
 # Make sure user is pi
 if [ $USER != $currentuser ]; then
