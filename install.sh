@@ -1,8 +1,8 @@
 #!/bin/sh
 
-# Gridseed single line installer aimed for Raspbian on Raspberry Pi 
+# Gridseed single line installer aimed at Raspbian on Raspberry Pi 
 # install.sh
-# DavidMaitland.me & josh.farrant.me 2014
+# DavidMaitland.me & Josh.Farrant.me 2014
 
 # This script will do the following:
 # 1. Install the requirements for building dtbartle version of cgminer
@@ -13,8 +13,8 @@
 # 6. Add script for ease of starting miner
 
 installdir='miner'
-currentuser='pi'
-logfile='/home/pi/gspmi-install.log'
+currentuser='joshfarrant'
+logfile='/home/joshfarrant/gspmi-install.log'
 
 # info='\n\e[46m - \e[49m'
 # ok='\n\e[42m + \e[49m'
