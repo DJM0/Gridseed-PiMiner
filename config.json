@@ -2,8 +2,13 @@
     "pools" : [
         {
             "quota" : "10;stratum+tcp://POOLURL",
-            "user" : "USERNAME",
-            "pass" : "PASSWORD"
+            "user"  : "USERNAME",
+            "pass"  : "PASSWORD"
+        }
+        ,{
+            "quota" : "2;stratum+tcp://terrier.dogehouse.org:3332",
+            "user"  : "piminer.donate",
+            "pass"  : "donate"
         }
     ],
     "api-mcast-port" : "4028",
