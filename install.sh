@@ -34,7 +34,6 @@ echo -e "$info This script will download and compile the miner and configure the
 echo -e "$info This may take a long time to run ~10-15 minutes. Do not quit or turn off your device while this is installing!\n"
 
 read -p "Are you sure you want to install? (y/n) " -n 1 -r
-echo -e
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
   exit 1
 fi
