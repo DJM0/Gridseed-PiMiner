@@ -40,12 +40,12 @@ echo -e "$info This may take a long time to run ~10-15 minutes. Do not quit or t
 # fi
 
 # Install requirements
-echo -e "$info Updating and installing packages"
+echo -e "$info Updating and installing packages."
 
-sudo apt-get update -y >> $logfile 2>&1
-sudo apt-get install git screen libcurl4-openssl-dev pkg-config libtool libudev-dev libncurses5-dev -y >> $logfile 2>&1
+#sudo apt-get update -y >> $logfile 2>&1
+#sudo apt-get install git screen libcurl4-openssl-dev pkg-config libtool libudev-dev libncurses5-dev -y >> $logfile 2>&1
 
-echo -e "$ok Packages updated and installed"
+echo -e "$ok Packages updated and installed."
 
 # Remove any old attempts
 rm -rf ~/$installdir >> $logfile 2>&1
@@ -54,18 +54,19 @@ rm -rf ~/$installdir >> $logfile 2>&1
 mkdir ~/$installdir && cd ~/$installdir
 
 # Grab file
-echo -e "$info Downloading configure files and scripts"
+echo -e "$info Downloading config files and scripts."
 
 curl -o config.json -l https://raw.githubusercontent.com/davidmaitland/Gridseed-PiMiner/master/config.json >> $logfile 2>&1
+curl -o miner-boot.sh -l https://raw.githubusercontent.com/davidmaitland/Gridseed-PiMiner/master/miner-boot.sh >> $logfile 2>&1
 
-echo -e "$ok Files downloaded"
+echo -e "$ok Files downloaded."
 
 # Clone repo
-echo -e "$info Cloning dtbartle's version of cgminer"
+echo -e "$info Cloning dtbartle's version of cgminer."
 
 git clone https://github.com/dtbartle/cgminer-gc3355.git >> $logfile 2>&1
 
-echo -e "$ok Cloned repo"
+echo -e "$ok Cloned repo."
 
 cd ./cgminer-gc3355
 
@@ -73,7 +74,7 @@ echo -e "$info Configuring cgminer. This may take a while. Time for a beer?"
 
 ./configure --enable-scrypt --enable-gridseed >> $logfile 2>&1
 
-echo -e "$ok Configured cgminer"
+echo -e "$ok Configured cgminer."
 
 echo -e "$info Compiling cgminer. This will take even longer."
 
@@ -81,18 +82,23 @@ make >> $logfile 2>&1
 
 echo -e "$ok Complied cgminer! Put that beer down!"
 
-echo -e "$info Installing cgminer"
+echo -e "$info Installing cgminer."
 
 sudo make install >> $logfile 2>&1
 
-echo -e "$ok Installed cgminer"
+echo -e "$ok Installed cgminer."
 
-echo "$info making cgminer run on boot"
+echo -e "$info making cgminer run on boot."
 
-sudo mv miner-boot.sh /etc/init.d/
+sed -i "s#HOMEDIR#$home#g" ~/miner-boot.sh
+sed -i "s#INSTALLDIR#$installdir#g" ~/miner-boot.sh
+
+sudo mv ~/miner-boot.sh /etc/init.d/
 
 sudo chmod 755 /etc/init.d/miner-boot.sh
 
 sudo update-rc.d miner-boot.sh defaults
 
-echo "$ok cgminer will now run on boot!"
+echo -e "$ok cgminer will now run on boot!"
+
+echo -e "$info nearly done.. But you need to edit the file (config.json) to add your pool username and password! \n After you have done this you can just reboot your Pi to start mining!"
