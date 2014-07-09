@@ -4,4 +4,4 @@
 # miner-boot.sh
 # DavidMaitland.me & Josh.Farrant.me 2014
 
-sudo cgminer --config config.json
+screen -dmS piMiner cgminer -c ~/config.json
