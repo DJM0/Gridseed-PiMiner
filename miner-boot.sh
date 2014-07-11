@@ -4,4 +4,5 @@
 # miner-boot.sh
 # DavidMaitland.me & Josh.Farrant.me 2014
 
-screen -dmS piMiner cgminer -c HOMEDIR/INSTALLDIR/config.json
+#screen -dmS piMiner 
+INSTALLDIR/cgminer-gc3355/cgminer -c INSTALLDIR/config.json &

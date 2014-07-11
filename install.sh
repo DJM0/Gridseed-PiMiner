@@ -12,22 +12,17 @@
 # 5. Add on boot script for automatically running miner
 # 6. Add script for ease of starting miner
 
-installdir="miner"
-# currentuser="pi"
-
 home=$(echo ~)
 
-logfile="$home/gspmi-install.log"
+installdir="$home/miner"
+
+logfile="$home/miner-install.log"
+
+repo="https://raw.githubusercontent.com/davidmaitland/Gridseed-PiMiner/master"
 
 info='\n \e[46m - \e[49m'
 ok='\n \e[42m + \e[49m'
 error='\n \e[41m ! \e[49m'
-
-# Make sure user is pi
-# if [ $USER != $currentuser ]; then
-#   echo -e "$error Not running as $currentuser! :("
-#   exit 1
-# fi
 
 # Intro for user
 echo -e "$info This script will download and compile the miner and configure the miner to start on boot."
@@ -42,22 +37,22 @@ echo -e "$info This may take a long time to run ~10-15 minutes. Do not quit or t
 # Install requirements
 echo -e "$info Updating and installing packages."
 
-#sudo apt-get update -y >> $logfile 2>&1
-#sudo apt-get install git screen libcurl4-openssl-dev pkg-config libtool libudev-dev libncurses5-dev -y >> $logfile 2>&1
+sudo apt-get update -y >> $logfile 2>&1
+sudo apt-get install git screen libcurl4-openssl-dev pkg-config libtool libudev-dev libncurses5-dev -y >> $logfile 2>&1
 
 echo -e "$ok Packages updated and installed."
 
 # Remove any old attempts
-rm -rf ~/$installdir >> $logfile 2>&1
+rm -rf $installdir >> $logfile 2>&1
 
 # Create directory for files
-mkdir ~/$installdir && cd ~/$installdir
+mkdir $installdir && cd $installdir
 
 # Grab file
 echo -e "$info Downloading config files and scripts."
 
-curl -o config.json -l https://raw.githubusercontent.com/davidmaitland/Gridseed-PiMiner/master/config.json >> $logfile 2>&1
-curl -o miner-boot.sh -l https://raw.githubusercontent.com/davidmaitland/Gridseed-PiMiner/master/miner-boot.sh >> $logfile 2>&1
+curl -o config.json -l $repo/config.json >> $logfile 2>&1
+curl -o miner-boot.sh -l $repo/miner-boot.sh >> $logfile 2>&1
 
 echo -e "$ok Files downloaded."
 
@@ -90,14 +85,13 @@ echo -e "$ok Installed cgminer."
 
 echo -e "$info making cgminer run on boot."
 
-sed -i "s#HOMEDIR#$home#g" ~/$installdir/miner-boot.sh
-sed -i "s#INSTALLDIR#$installdir#g" ~/$installdir/miner-boot.sh
+sed -i "s#INSTALLDIR#$installdir#g" $installdir/miner-boot.sh >> $logfile 2>&1
 
-sudo mv ~/$installdir/miner-boot.sh /etc/init.d/
+sudo mv ~/$installdir/miner-boot.sh /etc/init.d/ >> $logfile 2>&1
 
-sudo chmod 755 /etc/init.d/miner-boot.sh
+sudo chmod 755 /etc/init.d/miner-boot.sh >> $logfile 2>&1
 
-sudo update-rc.d miner-boot.sh defaults
+sudo update-rc.d miner-boot.sh defaults >> $logfile 2>&1
 
 echo -e "$ok cgminer will now run on boot!"
 
