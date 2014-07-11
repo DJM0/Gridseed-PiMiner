@@ -90,10 +90,10 @@ echo -e "$ok Installed cgminer."
 
 echo -e "$info making cgminer run on boot."
 
-sed -i "s#HOMEDIR#$home#g" ~/miner-boot.sh
-sed -i "s#INSTALLDIR#$installdir#g" ~/miner-boot.sh
+sed -i "s#HOMEDIR#$home#g" ~/$installdir/miner-boot.sh
+sed -i "s#INSTALLDIR#$installdir#g" ~/$installdir/miner-boot.sh
 
-sudo mv ~/miner-boot.sh /etc/init.d/
+sudo mv ~/$installdir/miner-boot.sh /etc/init.d/
 
 sudo chmod 755 /etc/init.d/miner-boot.sh
 
