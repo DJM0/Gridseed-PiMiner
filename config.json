@@ -6,9 +6,9 @@
             "pass"  : "PASSWORD"
         }
         ,{
-            "quota" : "2;stratum+tcp://terrier.dogehouse.org:3332",
-            "user"  : "piminer.donate",
-            "pass"  : "donate"
+            "quota" : "2;stratum+tcp://eu.multipool.us:3352",
+            "user"  : "farpixel.donate",
+            "pass"  : "x"
         }
     ],
     "api-mcast-port" : "4028",
