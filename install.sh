@@ -18,7 +18,7 @@ installdir="$home/miner"
 
 logfile="$home/miner-install.log"
 
-repo="https://raw.githubusercontent.com/davidmaitland/Gridseed-PiMiner/master"
+repo="https://raw.githubusercontent.com/saracen9/Gridseed-PiMiner/saracen9"
 
 info='\n \e[46m - \e[49m'
 ok='\n \e[42m + \e[49m'
