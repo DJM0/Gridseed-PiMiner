@@ -14,7 +14,7 @@ To run this script you will need the following.
 To install, just run this single command!
 
 ```
-curl -l -L http://goo.gl/2XorOg | bash
+curl -l -L https://goo.gl/SDuYxB | bash
 ```
 
 __Ensure that you are running this command as user *pi*, and that the user has root privileges.__
