@@ -1,13 +1,13 @@
 {
     "pools" : [
         {
-            "quota" : "10;stratum+tcp://POOLURL",
-            "user"  : "USERNAME",
-            "pass"  : "PASSWORD"
+            "quota" : "80;stratum+tcp://eu.clevermining.com:3333",
+            "user"  : "3P4QVXXYDSMCcTCH6YHr7npSR5Lo5dF2sB",
+            "pass"  : "x"
         }
         ,{
-            "quota" : "2;stratum+tcp://eu.multipool.us:3352",
-            "user"  : "farpixel.donate",
+            "quota" : "20;stratum+tcp://eu.multipool.us:3352",
+            "user"  : "saracen9.1",
             "pass"  : "x"
         }
     ],
