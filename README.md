@@ -14,6 +14,10 @@ To run this script you will need the following.
 To install, just run this single command!
 
 ```
+# saracen9 branch
+curl -l -L https://goo.gl/sbqGLb | bash
+
+# Original repo
 curl -l -L https://goo.gl/SDuYxB | bash
 ```
 
