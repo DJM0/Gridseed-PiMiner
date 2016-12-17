@@ -18,7 +18,7 @@ installdir="$home/miner"
 
 logfile="$home/miner-install.log"
 
-repo="https://raw.githubusercontent.com/davidmaitland/Gridseed-PiMiner/master"
+repo="https://raw.githubusercontent.com/saracen9/Gridseed-PiMiner/saracen9"
 
 info='\n \e[46m - \e[49m'
 ok='\n \e[42m + \e[49m'
@@ -85,13 +85,19 @@ echo -e "$ok Installed cgminer."
 
 echo -e "$info making cgminer run on boot."
 
-sed -i "s#INSTALLDIR#$installdir#g" $installdir/miner-boot.sh >> $logfile 2>&1
+sed -i.bak "s/INSTALLDIR/$(echo $installdir)/g" $installdir/miner-boot.sh >> $logfile 2>&1
 
 sudo mv $installdir/miner-boot.sh /etc/init.d/ >> $logfile 2>&1
 
 sudo chmod 755 /etc/init.d/miner-boot.sh >> $logfile 2>&1
 
 sudo update-rc.d miner-boot.sh defaults >> $logfile 2>&1
+
+# added for user permissions 2016.01.02
+# source: https://github.com/ckolivas/cgminer/blob/master/ASIC-README
+echo -e "$info giving $(whomai) direct access to USB devices"
+sudo usermod -G plugdev -a $(whoami)
+sudo cp $installdir/cgminer-gc3355/01-cgminer.rules /etc/udev/rules.d/
 
 echo -e "$ok cgminer will now run on boot!"
 

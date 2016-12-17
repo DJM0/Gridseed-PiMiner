@@ -14,7 +14,11 @@ To run this script you will need the following.
 To install, just run this single command!
 
 ```
-curl -l -L http://goo.gl/2XorOg | bash
+# saracen9 branch
+curl -l -L https://goo.gl/sbqGLb | bash
+
+# Original repo
+curl -l -L https://goo.gl/SDuYxB | bash
 ```
 
 __Ensure that you are running this command as user *pi*, and that the user has root privileges.__
