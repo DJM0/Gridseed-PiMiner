@@ -85,7 +85,7 @@ echo -e "$ok Installed cgminer."
 
 echo -e "$info making cgminer run on boot."
 
-sed -i "s/INSTALLDIR/$installdir/g" $installdir/miner-boot.sh >> $logfile 2>&1
+sed -i.bak "s/INSTALLDIR/$(echo $installdir)/g" $installdir/miner-boot.sh >> $logfile 2>&1
 
 sudo mv $installdir/miner-boot.sh /etc/init.d/ >> $logfile 2>&1
 
